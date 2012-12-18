@@ -263,6 +263,12 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
      */
     public void setActivityChooserModel(ActivityChooserModel dataModel) {
         mAdapter.setDataModel(dataModel);
+        int historysize = mAdapter.getHistorySize();
+        if (historysize>0) {
+            mAdapter.setShowDefaultActivity(false, false);
+        } else {
+            mAdapter.setShowDefaultActivity(true, true);
+        }
         if (isShowingPopup()) {
             dismissPopup();
             showPopup();
